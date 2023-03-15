@@ -16,7 +16,7 @@ sequenceDiagram
     server-->>browser: HTML document
     deactivate server
 
-        Note left of browser: The browser reloads the Notes page.
+        Note left of browser: The browser reloads the Notes page
         Note left of browser: The reload causes three more HTTP requests:
         Note left of browser:  fetching main.css
         Note left of browser:  fetching main.js
