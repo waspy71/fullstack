@@ -72,39 +72,9 @@ app.delete('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-/*
-    const generateId = () => {
-        const duplicates = persons.map(p => p.id)
-
-        const min = 1
-        const max = 10000
-        const newId = Math.floor(Math.random() * (max - min) + min)
-
-        for(const i = 0; i < 10000; i++) {
-            if (!duplicates.includes(newId)) {
-                return newId
-            } else {
-                console.log('problem')
-            }
-        }
-    }
-    */
 
 app.post('/api/persons', (request, response, next) => {
   const body = request.body
-  console.log('body', body)
-
-  /*
-        if (!body.name || !body.number)  {
-            return response.status(400).json({
-                error: 'missing data'
-            })
-        } else if (persons.find(p => p.name === body.name)) {
-            return response.status(400).json({
-                error: 'name must be unique'
-            })
-        }
-        */
 
   const person =  new Person ({
     name: body.name,
@@ -119,8 +89,6 @@ app.post('/api/persons', (request, response, next) => {
 })
 
 app.put('/api/persons/:id', (request, response, next) => {
-
-
   const { name, number } = request.body
 
   Person.findByIdAndUpdate(
@@ -137,7 +105,7 @@ app.put('/api/persons/:id', (request, response, next) => {
 app.use(unknownEndpoint)
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
