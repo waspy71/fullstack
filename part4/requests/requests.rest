@@ -5,10 +5,30 @@ GET http://localhost:3003/api/blogs
 
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pa2VUIiwiaWQiOiI2NDQ2NjgzMTU4NTg5ZWQyZmE4NmIzZWUiLCJpYXQiOjE2ODI0MjE4MDUsImV4cCI6MTY4MjQyNTQwNX0.4hhdTEGCFIE5DaglQBy1woRs1I38KExvuqFYLBPZ5OE
 
 {
-    "title": "blog_test",
-    "author": "author_test",
-    "url": "https://testblog.com",
-    "likes": 50
+    "title": "Lazy Mikes Tuesday blog",
+    "author": "Mike Tyson",
+    "url": "https://tiger2.com",
+    "likes": 150,
+    "user": "6446683158589ed2fa86b3ee"
 }
+
+###
+
+GET http://localhost:3003/api/users
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "Sum Ting Wong",
+    "name": "Wong",
+    "password": "zxcv"
+}
+
+###
+DELETE http://localhost:3003/api/blogs/6447b87d7211ca5ce185972e
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1bSBUaW5nIFdvbmciLCJpZCI6IjY0NDU2NDVhNDc4YTE3ZTkzNzlmZDk3NCIsImlhdCI6MTY4MjQyMjAzNywiZXhwIjoxNjgyNDI1NjM3fQ.70m4vUh7Lx1r6SEDdwEX-XeUGknHJa2s_10RmPMOK6g
