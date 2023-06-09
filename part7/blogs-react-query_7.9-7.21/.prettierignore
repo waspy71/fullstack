@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+node_modules
+cypress
+cypress.config.js
+.gitignore
+.eslintrc.js
+.eslintignore
+.gitignore
