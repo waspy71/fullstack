@@ -19,36 +19,66 @@ blogsRouter.post('/', async (request, response) => {
     user: request.user._id
   })
   
-  const savedBlog = await blog.save()
+  let savedBlog = await blog.save()
   request.user.blogs = request.user.blogs.concat(savedBlog._id)
   await request.user.save()
+  savedBlog = await Blog.findById(savedBlog._id).populate('user')
   response.status(201).json(savedBlog)
 })
 
 blogsRouter.delete('/:id', async (request, response) => {
   const blog = await Blog.findById(request.params.id)
 
-  if ( blog.user.toString() === request.user._id.toString()) {
-    await Blog.findByIdAndRemove(request.params.id)
-    request.user.blogs = request.user.blogs.filter(b => b.toString() !== blog._id.toString())
-    await request.user.save()
-    response.status(204).end()
-  } else {
+  if ( !request.user || blog.user.toString() !== request.user._id.toString()) {
     return response.status(400).json({ error: 'must be the creator of the blog' })
-  }
+  } 
+
+  request.user.blogs = request.user.blogs.filter(b => b.toString() !== blog._id.toString())
+  await request.user.save()
+  await Blog.findByIdAndRemove(request.params.id)
+  response.status(204).end()
+
 
 })
 
 blogsRouter.put('/:id', async (request, response) => {
-  const { title, author, url, likes } = request.body
+  const { title, author, url, likes, user } = request.body
 
-  const blogUpdate = await Blog.findByIdAndUpdate(
+  let blogUpdate = await Blog.findByIdAndUpdate(
     request.params.id,
-    { title, author, url, likes },
+    { title, author, url, likes, user },
     { new: true, runValidators: true, context: 'query' }
   )
+
+  blogUpdate = await Blog.findById(blogUpdate._id).populate('user')
+
+  console.log('server blogupdate', blogUpdate)
   response.json(blogUpdate)
 
+
+})
+
+blogsRouter.post('/:id/comments', async (request, response) => {
+  const comment = request.body.comment
+
+  const blog = await Blog.findById(request.params.id)
+  // console.log('REQUESTED Blog to check', blog)
+  // console.log('Comment', comment)
+
+  const blogComment =
+    await Blog.findByIdAndUpdate(
+      request.params.id,
+      { 
+        title: blog.title,
+        author: blog.author,
+        url: blog.url,
+        likes: blog.likes,
+        user: blog.user,
+        comments: [...blog.comments, comment]
+       },
+       { new: true, runValidators: true, context: 'query' }
+    )
+    response.status(201).json(blogComment)
 
 })
 

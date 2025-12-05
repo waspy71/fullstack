@@ -5,7 +5,7 @@ GET http://localhost:3003/api/blogs
 
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pa2VUIiwiaWQiOiI2NDQ2NjgzMTU4NTg5ZWQyZmE4NmIzZWUiLCJpYXQiOjE2ODI0MjE4MDUsImV4cCI6MTY4MjQyNTQwNX0.4hhdTEGCFIE5DaglQBy1woRs1I38KExvuqFYLBPZ5OE
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pa2VUIiwiaWQiOiI2NDVhMmQyNzE4YzM1YzA4NWNiNWJhNjYiLCJpYXQiOjE2ODM2MzE0MDYsImV4cCI6MTY4MzYzNTAwNn0.bqT-Va1Y72po0eoZGfKSiOTOy7rWNfNgiDTd7ivr8bg
 
 {
     "title": "Lazy Mikes Tuesday blog",
@@ -31,4 +31,4 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3003/api/blogs/6447b87d7211ca5ce185972e
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN1bSBUaW5nIFdvbmciLCJpZCI6IjY0NDU2NDVhNDc4YTE3ZTkzNzlmZDk3NCIsImlhdCI6MTY4MjQyMjAzNywiZXhwIjoxNjgyNDI1NjM3fQ.70m4vUh7Lx1r6SEDdwEX-XeUGknHJa2s_10RmPMOK6g
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pa2VUIiwiaWQiOiI2NDVhMmQyNzE4YzM1YzA4NWNiNWJhNjYiLCJpYXQiOjE2ODM2MzE0MDYsImV4cCI6MTY4MzYzNTAwNn0.bqT-Va1Y72po0eoZGfKSiOTOy7rWNfNgiDTd7ivr8bg

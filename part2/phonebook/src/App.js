@@ -129,12 +129,22 @@ const App = () => {
               setTimeout(() => {
                 setErrorMessage(null)
               }, 5000)
+            })
+            //added error catching during number change
+            //can change already existing(patterned) number into wrong one
+          .catch(error => {
+            setErrorMessage(
+              [`${error.response.data.error}`, 'failure']
+              )
+            setTimeout(() => {
+              setErrorMessage(null)
+            }, 5000)
+            console.log(error)
           })
       }
 
     } else {
-      setPersons(persons.concat(personObject))
-
+      //1.1
       services
         .create(personObject)
         .then(returnedPerson => {
@@ -145,7 +155,19 @@ const App = () => {
             setTimeout(() => {
               setErrorMessage(null)
             }, 5000)
+            //setPersons(persons.concat(personObject)) //changed position from 1.1
         })
+        //HERE
+        .catch(error => {
+          setErrorMessage(
+            [`${error.response.data.error}`, 'failure']
+            )
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 5000)
+          console.log(error)
+        })
+
       setNewName('')
       setNumber('')
     }

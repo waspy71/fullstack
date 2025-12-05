@@ -24,7 +24,7 @@ const AnecdoteList = () => {
       if (filter !== '') {
         return anecdotes.filter(a => a.content.toLowerCase().includes(filter.toLowerCase()))
       }
-      return [...anecdotes]
+      return [...anecdotes]   // we return spread syntax anecdotes because sort can be performed on immutable objects
     })
     
     return (
